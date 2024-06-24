@@ -15,7 +15,7 @@ class InventarioController extends Controller
     public function index()
     {
         $inventarios = Inventario::all();
-        return view('inventarios.index', [
+        return view('pages/inventarios.index', [
             'inventarios' => $inventarios
         ]);
     }
@@ -27,7 +27,7 @@ class InventarioController extends Controller
     {
         $productos = Producto::all();
         $categorias = Categoria::all();
-        return view('inventarios.create',
+        return view('pages/inventarios.create',
             [
                 'productos' => $productos,
                 'categorias' => $categorias
@@ -66,7 +66,7 @@ class InventarioController extends Controller
         $productos = Producto::all();
         $categorias = Categoria::all();
         // dd($inventario);
-        return view('inventarios.show', [
+        return view('pages/inventarios.show', [
             'inventario' => $inventario,
             'productos' => $productos,
             'categorias' => $categorias
@@ -81,7 +81,7 @@ class InventarioController extends Controller
         $productos = Producto::all();
         $categorias = Categoria::all();
         // dd($inventario);
-        return view('inventarios.edit', [
+        return view('pages/inventarios.edit', [
             'inventario' => $inventario,
             'productos' => $productos,
             'categorias' => $categorias

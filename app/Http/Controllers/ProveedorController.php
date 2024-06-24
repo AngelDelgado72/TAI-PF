@@ -15,7 +15,7 @@ class ProveedorController extends Controller
         // buscar en la base de datos todos los productos
         $proveedores = Proveedor::all();
 
-        return view('proveedores.index', [
+        return view('pages/proveedores.index', [
             'proveedores' => $proveedores
         ]);    }
 
@@ -24,7 +24,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('proveedores.create');
+        return view('pages/proveedores.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class ProveedorController extends Controller
      */
     public function show(Proveedor $proveedor)
     {
-        return view('proveedores.show', compact('proveedor'));
+        return view('pages/proveedores.show', compact('proveedor'));
     }
 
     /**
@@ -60,7 +60,7 @@ class ProveedorController extends Controller
      */
     public function edit(Proveedor $proveedor)
     {
-        return view('proveedores.edit', compact('proveedor'));
+        return view('pages/proveedores.edit', compact('proveedor'));
     }
 
     /**

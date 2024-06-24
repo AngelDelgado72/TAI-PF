@@ -11,7 +11,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        return view('ventas.index');
+        return view('pages/ventas.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class VentaController extends Controller
      */
     public function create()
     {
-        return view('ventas.create');
+        return view('pages/ventas.create');
     }
 
     /**

@@ -1,30 +1,43 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VentaController;
-use App\Http\Controllers\CompraController;
-use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DataFeedController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductoController;
-use App\Http\Controllers\VendedorController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ProveedorController;
-use App\Http\Controllers\CotizacionController;
+use App\Http\Controllers\VentaController;
 use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CompraController;
+use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\FormaDePagoController;
+use App\Http\Controllers\VendedorController;
+use App\Http\Controllers\CotizacionController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::redirect('/', 'login');
+
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    // Route for the getting the data feed
+    Route::get('/json-data-feed', [DataFeedController::class, 'getDataFeed'])->name('json_data_feed');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/test', function () {
+       return view('pages/test/test');
+    })->name('test');
 
     Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
     Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
@@ -105,7 +118,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cotizaciones/{cotizacion}/edit', [CotizacionController::class, 'edit'])->name('cotizaciones.edit');
     Route::put('/cotizaciones/{cotizacion}', [CotizacionController::class, 'update'])->name('cotizaciones.update');
     Route::delete('/cotizaciones/{cotizacion}', [CotizacionController::class, 'destroy'])->name('cotizaciones.destroy');
-    
-});
 
-require __DIR__.'/auth.php';
+    Route::fallback(function() {
+        return view('pages/utility/404');
+    });    
+});

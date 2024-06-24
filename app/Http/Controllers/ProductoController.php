@@ -16,7 +16,7 @@ class ProductoController extends Controller
         // buscar en la base de datos todos los productos
         $productos = Producto::all();
 
-        return view('productos.index', [
+        return view('pages/productos.index', [
             'productos' => $productos
         ]);
     }
@@ -28,7 +28,7 @@ class ProductoController extends Controller
     public function create()
     {
         $categorias = Categoria::all();
-        return view('productos.create',
+        return view('pages/productos.create',
             [
                 'categorias' => $categorias
             ]
@@ -64,7 +64,7 @@ class ProductoController extends Controller
     public function show(Producto $producto)
     {
         $categorias = Categoria::all();
-        return view('productos.show', 
+        return view('pages/productos.show', 
             [
                 'producto' => $producto,
                 'categorias' => $categorias
@@ -79,7 +79,7 @@ class ProductoController extends Controller
     public function edit(Producto $producto)
     {
         $categorias = Categoria::all();
-        return view('productos.edit', 
+        return view('pages/productos.edit', 
             [
                 'producto' => $producto,
                 'categorias' => $categorias

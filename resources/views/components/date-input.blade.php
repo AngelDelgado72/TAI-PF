@@ -1,3 +1,3 @@
 @props(['disabled' => false])
 
-<input type="date" {{ $attributes->merge(['class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm']) }} {{ $disabled ? 'disabled' : '' }}>
+<input type="date" {{ $attributes->merge(['class' => 'form-input w-full']) }} {{ $disabled ? 'disabled' : '' }}>

@@ -15,7 +15,7 @@ class FormaDePagoController extends Controller
     public function index()
     {
         $formasdepago = FormaDePago::all();
-        return view('forma-pago.index', [
+        return view('pages/forma-pago.index', [
             'formasdepago' => $formasdepago
         ]);
     }
@@ -25,7 +25,7 @@ class FormaDePagoController extends Controller
      */
     public function create()
     {
-        return view('forma-pago.create');
+        return view('pages/forma-pago.create');
     }
 
     /**
@@ -48,7 +48,7 @@ class FormaDePagoController extends Controller
      */
     public function show(FormaDePago $formaPago)
     {
-        return view('forma-pago.show', compact('formaPago'));
+        return view('pages/forma-pago.show', compact('formaPago'));
     }
 
     /**
@@ -56,7 +56,7 @@ class FormaDePagoController extends Controller
      */
     public function edit(FormaDePago $formaPago)
     {
-        return view('forma-pago.edit', compact('formaPago'));
+        return view('pages/forma-pago.edit', compact('formaPago'));
     }
 
     /**

@@ -13,7 +13,7 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes = Cliente::all();
-        return view('clientes.index', [
+        return view('pages/clientes.index', [
             'clientes' => $clientes
         ]);
     }
@@ -23,7 +23,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('clientes.create');
+        return view('pages/clientes.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        return view('clientes.show', compact('cliente'));
+        return view('pages/clientes.show', compact('cliente'));
     }
 
     /**
@@ -61,7 +61,7 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        return view('clientes.edit', compact('cliente'));
+        return view('pages/clientes.edit', compact('cliente'));
     }
 
     /**
