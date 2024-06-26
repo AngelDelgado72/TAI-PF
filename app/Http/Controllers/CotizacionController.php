@@ -120,8 +120,8 @@ class CotizacionController extends Controller
      */
     public function edit(Cotizacion $cotizacion)
     {
-        $clientes = Cliente::all(); // Asegúrate de tener el modelo y la relación correcta aquí
-        $productos = Producto::all(); // Asegúrate de tener el modelo y la relación correcta aquí
+        $clientes = Cliente::all();
+        $productos = Producto::all(); 
     
         // Obtener productos asociados a la cotización
         $productos_cotizacion = $cotizacion->productos->pluck('id')->toArray();
@@ -174,7 +174,7 @@ class CotizacionController extends Controller
             }
             $cotizacion->productos()->sync($productos_sync);
         } else {
-            // Si no se seleccionan productos, eliminar todos los productos asociados
+            // Si no se seleccionan productos eliminar todos los productos asociados
             $cotizacion->productos()->detach();
         }
     
